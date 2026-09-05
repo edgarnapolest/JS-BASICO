@@ -1,0 +1,59 @@
+*{
+    background-color: #5f5858;
+    font-family: sans-serif;
+
+}
+body,div{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*    Calc-Divs Section   */
+.calc__box{
+    display: grid;
+    background-color: rgba(91, 86, 86, 0.897);
+    width: clamp(300px,70%,600px);
+    height: 100vh;
+    margin: 50px auto;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 4fr;
+    gap: 10px;
+    padding: 10px;
+}
+.calc__box-result{
+    margin: auto;
+    width: 100%;    
+    background-color: rgba(227, 205, 205, 0.897);
+    outline: none;
+}
+.calc__box-operations{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    gap: 10px;
+}
+.calc__box-numbers{
+    display: grid; 
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(4,1fr);
+    gap: 10px;
+}
+.calc__box-valor{
+    background-color: #48e;
+    color: #fff;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.calc__box-result{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+
+/* Inputs y valores varios */
