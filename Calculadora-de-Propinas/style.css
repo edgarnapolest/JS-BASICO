@@ -1,59 +1,101 @@
 *{
     background-color: #5f5858;
     font-family: sans-serif;
-
 }
 body,div{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    --color-de-background: #3a3a3a;
+    --color-de-texto: #fff;
 }
-/*    Calc-Divs Section   */
+
 .calc__box{
     display: grid;
-    background-color: rgba(91, 86, 86, 0.897);
+    background-color: var(--color-de-background);
     width: clamp(300px,70%,600px);
-    height: 100vh;
+    height: 600px;
     margin: 50px auto;
-    border: 1px solid #fff;
+    border: 1px solid var(--color-de-texto);
     border-radius: 10px;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 4fr;
+    grid-template-rows: auto 1fr;
     gap: 10px;
     padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    color: var(--color-de-texto);
 }
+
 .calc__box-result{
-    margin: auto;
-    width: 100%;    
-    background-color: rgba(227, 205, 205, 0.897);
+    width: 100%;
     outline: none;
-}
-.calc__box-operations{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 1fr;
-    gap: 10px;
-}
-.calc__box-numbers{
-    display: grid; 
-    grid-template-columns: repeat(3,1fr);
-    grid-template-rows: repeat(4,1fr);
-    gap: 10px;
-}
-.calc__box-valor{
-    background-color: #48e;
-    color: #fff;
-    font-size: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-}
-.calc__box-result{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border: none;
+    background-color: var(--color-de-background);
+    color: var(--color-de-texto);
+    text-align: right;
+    padding: 10px;
     font-size: 40px;
 }
 
-/* Inputs y valores varios */
+.calc__box-buttons{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas:
+        "del  n7  n8  n9"
+        "div  n4  n5  n6"
+        "mul  n1  n2  n3"
+        "sub  n0  n0  dot"
+        "add  eq  clr pct";
+    gap: 10px;
+}
+
+.btn-del  { grid-area: del; }
+.btn-n7   { grid-area: n7; }
+.btn-n8   { grid-area: n8; }
+.btn-n9   { grid-area: n9; }
+.btn-div  { grid-area: div; }
+.btn-n4   { grid-area: n4; }
+.btn-n5   { grid-area: n5; }
+.btn-n6   { grid-area: n6; }
+.btn-mul  { grid-area: mul; }
+.btn-n1   { grid-area: n1; }
+.btn-n2   { grid-area: n2; }
+.btn-n3   { grid-area: n3; }
+.btn-sub  { grid-area: sub; }
+.btn-n0   { grid-area: n0; }
+.btn-dot  { grid-area: dot; }
+.btn-add  { grid-area: add; }
+.btn-eq   { grid-area: eq; }
+.btn-clr  { grid-area: clr; }
+.btn-pct  { grid-area: pct; }
+
+.calc__box-valor{
+    background-color: #48e;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.2s;
+}
+.calc__box-valor:hover{
+    filter: brightness(1.15);
+}
+
+/* Operadores matemáticos */
+.btn-div, .btn-mul, .btn-sub, .btn-add, .btn-pct{
+    background-color: #e8833a;
+}
+
+/* Igual */
+.btn-eq{
+    background-color: #4caf50;
+}
+
+/* Delete y Clear */
+.btn-del, .btn-clr{
+    background-color: #d9534f;
+    font-size: 18px; /* "Delete" y "CLEAR" son palabras largas, achico la letra para que entren */
+}

@@ -4,34 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="script.js">
     <title>Calculadora</title>
 </head>
 <body>
     <div class="calc__box">
-        <div class="calc__box-result">
-            <input type="text" class="calc__box-result" >
-        </div>
-        <div class="calc__box-operations">
-            <div class="calc__box-valor">/</div>
-            <div class="calc__box-valor">*</div>
-            <div class="calc__box-valor">-</div>
-            <div class="calc__box-valor">+</div>
-        </div>
-        <div class="calc__box-numbers">
-            <div class="calc__box-valor">9</div>
-            <div class="calc__box-valor">8</div>
-            <div class="calc__box-valor">7</div>
-            <div class="calc__box-valor">6</div>
-            <div class="calc__box-valor">5</div>
-            <div class="calc__box-valor">4</div>
-            <div class="calc__box-valor">3</div>
-            <div class="calc__box-valor">2</div>
-            <div class="calc__box-valor">1</div>
-            <div class="calc__box-valor">.</div>
-            <div class="calc__box-valor">0</div>
-            <div class="calc__box-valor">=</div>
+        <input type="text" class="calc__box-result">
+        <div class="calc__box-buttons">
+            <div class="calc__box-valor btn-del" data-valor="DEL">Delete</div>
+            <div class="calc__box-valor btn-n7" data-valor="7">7</div>
+            <div class="calc__box-valor btn-n8" data-valor="8">8</div>
+            <div class="calc__box-valor btn-n9" data-valor="9">9</div>
+
+            <div class="calc__box-valor btn-div" data-valor="/">/</div>
+            <div class="calc__box-valor btn-n4" data-valor="4">4</div>
+            <div class="calc__box-valor btn-n5" data-valor="5">5</div>
+            <div class="calc__box-valor btn-n6" data-valor="6">6</div>
+
+            <div class="calc__box-valor btn-mul" data-valor="*">*</div>
+            <div class="calc__box-valor btn-n1" data-valor="1">1</div>
+            <div class="calc__box-valor btn-n2" data-valor="2">2</div>
+            <div class="calc__box-valor btn-n3" data-valor="3">3</div>
+
+            <div class="calc__box-valor btn-sub" data-valor="-">-</div>
+            <div class="calc__box-valor btn-n0" data-valor="0">0</div>
+            <div class="calc__box-valor btn-dot" data-valor=".">.</div>
+
+            <div class="calc__box-valor btn-add" data-valor="+">+</div>
+            <div class="calc__box-valor btn-eq" data-valor="=">=</div>
+            <div class="calc__box-valor btn-clr" data-valor="CLR">CLEAR</div>
+            <div class="calc__box-valor btn-pct" data-valor="%">%</div>
         </div>
     </div>
+
+    <script src="script.js" defer></script>
 </body>
 </html>
