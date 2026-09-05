@@ -29,39 +29,33 @@ class Calculadora {
         this.segundoValor = ""
     }
 
-    ingresarNumero(numero) {
-        this.primerValor = numero
-        // ¿qué debería pasar acá?
-    }
-    
     elegirOperador(operador) {
+        this.primerValor = parseFloat(pantalla.value)
         this.operador = operador
         limpiarPantalla()
-        // ¿qué debería guardar acá?
     }
     
     calcular() {
         let resultadoFinal = 0
-        if(botonIgual.addEventListener("click")){
-            this.segundoValor = patalla.value
-            if(this.operador == "suma"){
-                resultadoFinal = suma(this.primerValor,this.segundoValor)
-            }
-            else if(this.operador == "resta"){
-                resultadoFinal = resta(this.primerValor,this.segundoValor)
-            }
-            else if(this.operador == "multiplicacion"){
-                resultadoFinal = multiplicacion(this.primerValor,this.segundoValor)
-            }
-            else if(this.operador == "division"){
-                resultadoFinal = division(this.primerValor,this.segundoValor)
-            }
-            else if(this.operador == "porcentaje"){
-                resultadoFinal = porcentaje(this.primerValor,this.segundoValor)
-            }
+        this.segundoValor = parseFloat(pantalla.value)
+        if(this.operador == "+"){
+            resultadoFinal = this.suma(this.primerValor,this.segundoValor)
         }
-        limpiarPantalla()
+        else if(this.operador == "-"){
+            resultadoFinal = this.resta(this.primerValor,this.segundoValor)
+        }
+        else if(this.operador == "*"){
+            resultadoFinal = this.multiplicacion(this.primerValor,this.segundoValor)
+        }
+        else if(this.operador == "/"){
+            resultadoFinal = this.division(this.primerValor,this.segundoValor)
+        }
+        else if(this.operador == "%"){
+            resultadoFinal = this.porcentaje(this.primerValor,this.segundoValor)
+        }
         pantalla.value = resultadoFinal
+        this.limpiar()
+        return resultadoFinal
     }
     
     limpiar() {
@@ -69,7 +63,7 @@ class Calculadora {
         this.operador = ""
         this.segundoValor = ""
     }
-        suma(a,b){
+    suma(a,b){
         return a+ b
     }
     resta(a,b){
@@ -108,6 +102,26 @@ botonIgual.addEventListener("click", function () {
 })
 
 //Botones de valores 
+
+botonSuma.addEventListener("click", function () {
+    calculadora.elegirOperador("+")
+})
+
+botonResta.addEventListener("click", function () {
+    calculadora.elegirOperador("-")
+})
+
+botonMultiplicacion.addEventListener("click", function () {
+    calculadora.elegirOperador("*")
+})
+
+botonDivisor.addEventListener("click", function () {
+    calculadora.elegirOperador("/")
+})
+
+botonPCT.addEventListener("click", function () {
+    calculadora.elegirOperador("%")
+})
 
 botonCero.addEventListener("click", function () {
     pantalla.value += 0
@@ -150,6 +164,29 @@ botonNueve.addEventListener("click", function () {
 })
 
 botonPunto.addEventListener("click", function () {
-    pantalla.value = parseFloat(pantalla.value)
-    pantalla.value += 0.0
+    pantalla.value += "."
 })
+
+class errorOperacion extends Error {
+    constructor(message) {
+        super(message);
+        this.name = "errorOperacion";
+    }
+    validacionDePunto(){
+        try{
+            if(pantalla.value.includes(".")){
+                throw new errorOperacion("Ya hay un punto en la operacion")
+            }
+            if(pantalla.value == ""){
+                throw new errorOperacion("No se puede poner un punto al principio de la operacion")
+            }
+            if(pantalla.value == "string"){
+                throw new errorOperacion("No se puede realizar la operacion con strings")
+            }
+        }
+        catch(error){
+            console.log("Ha ocurrido un error.",error.message)
+            limpiarPantalla()
+        }
+    }
+}

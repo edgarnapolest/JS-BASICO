@@ -2,12 +2,16 @@
     background-color: #5f5858;
     font-family: sans-serif;
 }
-body,div{
+body,div,input{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     --color-de-background: #3a3a3a;
     --color-de-texto: #fff;
+    --color-de-boton: #48e;
+    --color-operaciones: #e8833a;
+    --color-igual: #4caf50;
+    --color-delete-clear: #d9534f;
 }
 
 .calc__box{
@@ -41,12 +45,13 @@ body,div{
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, 1fr);
     grid-template-areas:
-        "del  n7  n8  n9"
-        "div  n4  n5  n6"
-        "mul  n1  n2  n3"
-        "sub  n0  n0  dot"
-        "add  eq  clr pct";
+        "n7  n8  n9 add"
+        "n4  n5  n6 sub"
+        "n1  n2  n3 mul"
+        "n0  n0  dot div"
+        "del eq  clr pct";
     gap: 10px;
+    border-radius: 10px;
 }
 
 .btn-del  { grid-area: del; }
@@ -70,7 +75,7 @@ body,div{
 .btn-pct  { grid-area: pct; }
 
 .calc__box-valor{
-    background-color: #48e;
+    background-color: var(--color-de-boton);
     font-size: 30px;
     display: flex;
     justify-content: center;
@@ -86,16 +91,16 @@ body,div{
 
 /* Operadores matemáticos */
 .btn-div, .btn-mul, .btn-sub, .btn-add, .btn-pct{
-    background-color: #e8833a;
+    background-color: var(--color-operaciones);
 }
 
 /* Igual */
 .btn-eq{
-    background-color: #4caf50;
+    background-color: var(--color-igual);
 }
 
 /* Delete y Clear */
 .btn-del, .btn-clr{
-    background-color: #d9534f;
-    font-size: 18px; /* "Delete" y "CLEAR" son palabras largas, achico la letra para que entren */
+    background-color: var(--color-delete-clear);
+    font-size: 18px; /* "Delete" y "CLEAR" son palabras largas, se le modifica el tamaño de letra para q se ajusten*/
 }
