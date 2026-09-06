@@ -27,6 +27,7 @@ class Calculadora {
         this.primerValor = ""
         this.operador = ""
         this.segundoValor = ""
+        this.resultadoReciente = false 
     }
 
     elegirOperador(operador) {
@@ -54,6 +55,7 @@ class Calculadora {
             resultadoFinal = this.porcentaje(this.primerValor,this.segundoValor)
         }
         pantalla.value = resultadoFinal
+        this.resultadoReciente = true
         this.limpiar()
         return resultadoFinal
     }
@@ -84,13 +86,23 @@ let calculadora = new Calculadora()
 
 //Funciones de la logica de la calculadora
 
-function agregarValor(valor) {
-    pantalla.value += valor
+function revisarCeros(){
+    if(pantalla.value == "0"){
+        pantalla.value = ""
+    }
 }
 
 function limpiarPantalla() {
     pantalla.value = ""
 }
+
+
+
+//Botones de valores 
+
+botonDEL.addEventListener("click",function(){
+    pantalla.value = pantalla.value.slice(0,-1)
+})
 
 botonCLR.addEventListener("click", function () {
     limpiarPantalla()
@@ -100,8 +112,6 @@ botonIgual.addEventListener("click", function () {
     let resultado = calculadora.calcular()
     pantalla.value = resultado
 })
-
-//Botones de valores 
 
 botonSuma.addEventListener("click", function () {
     calculadora.elegirOperador("+")
@@ -124,69 +134,92 @@ botonPCT.addEventListener("click", function () {
 })
 
 botonCero.addEventListener("click", function () {
+    revisarCeros()
     pantalla.value += 0
 })
 
 botonUno.addEventListener("click", function () {
+    revisarCeros()
     pantalla.value += 1
 })
 
 botonDos.addEventListener("click", function () {
+    revisarCeros()
     pantalla.value += 2
 })
 
 botonTres.addEventListener("click", function () {
+    revisarCeros()
     pantalla.value += 3
 })
 
 botonCuatro.addEventListener("click", function () {
+    revisarCeros()
     pantalla.value += 4
 })
 
 botonCinco.addEventListener("click", function () {
+    revisarCeros()
     pantalla.value += 5
 })
 
 botonSeis.addEventListener("click", function () {
+    revisarCeros()
     pantalla.value += 6
 })
 
 botonSiete.addEventListener("click", function () {
+    revisarCeros()
     pantalla.value += 7
 })
 
 botonOcho.addEventListener("click", function () {
+    revisarCeros()
     pantalla.value += 8
 })
 
 botonNueve.addEventListener("click", function () {
+    revisarCeros()
     pantalla.value += 9
 })
 
 botonPunto.addEventListener("click", function () {
-    pantalla.value += "."
+    try {
+        validarPunto()
+        pantalla.value += "."
+    } catch (error) {
+        console.log("Error:", error.message)
+    }
 })
 
+//validaciones de errores
 class errorOperacion extends Error {
     constructor(message) {
         super(message);
         this.name = "errorOperacion";
     }
-    validacionDePunto(){
-        try{
-            if(pantalla.value.includes(".")){
-                throw new errorOperacion("Ya hay un punto en la operacion")
-            }
-            if(pantalla.value == ""){
-                throw new errorOperacion("No se puede poner un punto al principio de la operacion")
-            }
-            if(pantalla.value == "string"){
-                throw new errorOperacion("No se puede realizar la operacion con strings")
-            }
-        }
-        catch(error){
-            console.log("Ha ocurrido un error.",error.message)
-            limpiarPantalla()
-        }
+}
+
+function validarPunto() {
+    if (pantalla.value.includes(".")) {
+        throw new ErrorOperacion("Ya hay un punto en la operación")
+    }
+    if (pantalla.value === "") {
+        throw new ErrorOperacion("No se puede poner un punto al principio")
     }
 }
+
+pantalla.addEventListener("keydown",function(evento){
+    let teclasPermitidas = ["0","1","2","3","4","5","6","7","8","9",".","+","-","*","/","%","Backspace","Enter"]
+    if(!teclasPermitidas.includes(evento.key)){
+        evento.preventDefault()
+    }
+    if (["+","-","*","/"].includes(evento.key)) {
+        evento.preventDefault()   // evita que el símbolo se escriba dos veces
+        calculadora.elegirOperador(evento.key)
+    }
+    if (evento.key === "Enter") {
+        evento.preventDefault()
+        calculadora.calcular()
+    }
+})
