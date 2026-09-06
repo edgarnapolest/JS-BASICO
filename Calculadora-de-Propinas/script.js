@@ -87,8 +87,9 @@ let calculadora = new Calculadora()
 //Funciones de la logica de la calculadora
 
 function revisarCeros(){
-    if(pantalla.value == "0"){
+    if(calculadora.resultadoReciente){
         pantalla.value = ""
+        calculadora.resultadoReciente = false
     }
 }
 
@@ -193,7 +194,7 @@ botonPunto.addEventListener("click", function () {
 })
 
 //validaciones de errores
-class errorOperacion extends Error {
+class ErrorOperacion extends Error {
     constructor(message) {
         super(message);
         this.name = "errorOperacion";
@@ -214,12 +215,15 @@ pantalla.addEventListener("keydown",function(evento){
     if(!teclasPermitidas.includes(evento.key)){
         evento.preventDefault()
     }
-    if (["+","-","*","/"].includes(evento.key)) {
+    if (["+","-","*","/","%"].includes(evento.key)) {
         evento.preventDefault()   // evita que el símbolo se escriba dos veces
         calculadora.elegirOperador(evento.key)
     }
-    if (evento.key === "Enter") {
+    else if (evento.key === "Enter") {
         evento.preventDefault()
         calculadora.calcular()
+    }else if(teclasPermitidas.slice(0,10).includes(evento.key)){
+        revisarCeros()
     }
+
 })

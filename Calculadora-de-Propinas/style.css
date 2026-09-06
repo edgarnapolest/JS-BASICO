@@ -1,6 +1,7 @@
 *{
     background-color: #5f5858;
     font-family: sans-serif;
+    --color-de-pantalla: #1a1a1aaa;
 }
 body,div,input{
     margin: 0;
@@ -33,11 +34,12 @@ body,div,input{
     width: 100%;
     outline: none;
     border: none;
-    background-color: var(--color-de-background);
+    background-color: var(--color-de-pantalla);
     color: var(--color-de-texto);
     text-align: right;
     padding: 10px;
     font-size: 40px;
+    border-radius: 10px;
 }
 
 .calc__box-buttons{
@@ -52,6 +54,7 @@ body,div,input{
         "del eq  clr pct";
     gap: 10px;
     border-radius: 10px;
+    background-color: var(--color-de-background);
 }
 
 .btn-del  { grid-area: del; }
