@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --color-de-letras: #fff;
+    --background-color: #20232a;
+    --background-color-sidebar: #2a2d3a;
+}
+
+body,div,ul,form,h1,p{
+    font-family: sans-serif;
+    color: var(--color-de-letras);
+    background-color: var(--background-color);
+}
+
+.main__list{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.main__list_showed{
+    display: grid;
+    grid-template-rows: 3fr 7fr; 
+}
+
+.sidebar__list{
+    display: flex;
+    flex-direction: column;
+}
+
