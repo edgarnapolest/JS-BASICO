@@ -16,9 +16,10 @@ body,div,ul,form,h1,p{
 .main__list{
     display: grid;
     grid-template-columns: 1fr 3fr;
+    height: 100vh;
 }
 
-.main__list_showed{
+.main__list-showed{
     display: grid;
     grid-template-rows: 3fr 7fr; 
 }
@@ -26,5 +27,19 @@ body,div,ul,form,h1,p{
 .sidebar__list{
     display: flex;
     flex-direction: column;
+    padding: 1rem;
+}
+
+.main__list-title{
+    padding: 1rem;
+}
+
+.main__list-description{
+    font-size: 1.2rem;
+}
+
+ul li{
+    list-style: none;
+    padding: 0.5rem;
 }
 
