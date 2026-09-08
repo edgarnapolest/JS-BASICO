@@ -40,6 +40,25 @@ body,div,ul,form,h1,p{
 
 ul li{
     list-style: none;
-    padding: 0.5rem;
+    padding: 1rem;
 }
 
+input,textarea{
+    background-color: var(--background-color);
+    color: var(--color-de-letras);
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 6px 8px;
+    border: 1px solid #666;
+}
+.main__list-title input{
+    width: 90%;
+    font-size: 2rem;
+}
+textarea{
+    resize: none;
+    height: clamp(300px,50%,800px);
+    width: 90%;
+    font-size: inherit;
+}
