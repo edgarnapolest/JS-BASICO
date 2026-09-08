@@ -43,6 +43,16 @@ ul li{
     padding: 1rem;
 }
 
+li{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-de-letras);
+    border-radius: 10px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
 input,textarea{
     background-color: var(--background-color);
     color: var(--color-de-letras);
