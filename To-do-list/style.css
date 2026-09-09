@@ -5,6 +5,7 @@
     --color-de-letras: #fff;
     --background-color: #20232a;
     --background-color-sidebar: #2a2d3a;
+    --color-bordes: #fff2;
 }
 
 body,div,ul,form,h1,p{
@@ -13,6 +14,7 @@ body,div,ul,form,h1,p{
     background-color: var(--background-color);
 }
 
+/*Main Section*/
 .main__list{
     display: grid;
     grid-template-columns: 1fr 3fr;
@@ -24,11 +26,6 @@ body,div,ul,form,h1,p{
     grid-template-rows: 3fr 7fr; 
 }
 
-.sidebar__list{
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-}
 
 .main__list-title{
     padding: 1rem;
@@ -36,21 +33,6 @@ body,div,ul,form,h1,p{
 
 .main__list-description{
     font-size: 1.2rem;
-}
-
-ul li{
-    list-style: none;
-    padding: 1rem;
-}
-
-li{
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--color-de-letras);
-    border-radius: 10px;
-    height: 30px;
-    align-items: center;
-    justify-content: center;
 }
 
 input,textarea{
@@ -65,10 +47,42 @@ input,textarea{
 .main__list-title input{
     width: 90%;
     font-size: 2rem;
+    border: none;
+    border-bottom: 1px solid var(--color-bordes);
+    outline: none;
 }
 textarea{
     resize: none;
     height: clamp(300px,50%,800px);
     width: 90%;
     font-size: inherit;
+}
+
+/*Sidebar Section*/
+
+.sidebar__list{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.sidebar__list-input{
+    width: 100%;
+    font-size: 1.2rem;
+}
+
+ul li{
+    list-style: none;
+    padding: 1rem;
+}
+
+li{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-bordes);
+    border-radius: 10px;
+    height: 30px;
+    align-items: start;
+    justify-content: center;
+    margin: 10px 0;
 }
