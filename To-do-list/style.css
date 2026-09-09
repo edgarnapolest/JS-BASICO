@@ -26,7 +26,6 @@ body,div,ul,form,h1,p{
     grid-template-rows: 3fr 7fr; 
 }
 
-
 .main__list-title{
     padding: 1rem;
 }
@@ -44,6 +43,7 @@ input,textarea{
     padding: 6px 8px;
     border: 1px solid #666;
 }
+
 .main__list-title input{
     width: 90%;
     font-size: 2rem;
@@ -51,6 +51,7 @@ input,textarea{
     border-bottom: 1px solid var(--color-bordes);
     outline: none;
 }
+
 textarea{
     resize: none;
     height: clamp(300px,50%,800px);

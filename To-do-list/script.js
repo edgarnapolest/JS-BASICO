@@ -5,6 +5,7 @@ let inputNuevaTareaTitulo = document.querySelector(".main__list-title-input")
 let inputNuevaTareaDescripcion = document.querySelector(".main__list-description-textarea")
 let botonAgregarNuevaTarea = document.querySelector('[data-valor="agregar"]')
 let botonBorrarTarea = document.querySelector('[data-valor = "borrar"]')
+let listaSidebar = document.querySelector(".sidebar__list-items")
 
 //clases
 class Tareas{
@@ -38,10 +39,23 @@ botonAgregarNuevaTarea.addEventListener("click", function (evento) {
     inputNuevaTareaTitulo.value = ""   
 })
 
+listaSidebar.addEventListener("click", function (evento) {
+    let idClickeado = evento.target.dataset.id
+
+    let tareaSeleccionada = tareas.find(function(tarea){
+        return tarea.id == idClickeado
+    })
+    
+    if (tareaSeleccionada) {
+        inputNuevaTareaTitulo.value = tareaSeleccionada.titulo
+        inputNuevaTareaDescripcion.value = tareaSeleccionada.descripcion
+    }
+
+})
+
+
 // botonBorrarTarea.addEventListener("click",function(){
 //     evento.preventDefault()
 //     let borradoDeTarea = {
-
 //     }
 // })
-
