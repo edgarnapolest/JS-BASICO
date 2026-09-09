@@ -18,13 +18,17 @@ class Tareas{
 }
 
 //funciones de la sidebar
-
 function pintarLista() {
     let listaSidebar = document.querySelector(".sidebar__list-items")
     listaSidebar.innerHTML = ""
     for (let i = 0; i < tareas.length; i++) {
         let tarea = tareas[i]
-        listaSidebar.innerHTML += `<li data-id="${tarea.id}">${tarea.titulo}</li>`
+        listaSidebar.innerHTML += `
+            <li class = "sidebar__li" data-id="${tarea.id}">
+                <span class="tarea-titulo">${tarea.titulo}</span>
+                <span class="btn-borrar" data-id="${tarea.id}">✕</span>
+            </li>
+        `
     }
 }
 
@@ -41,6 +45,16 @@ botonAgregarNuevaTarea.addEventListener("click", function (evento) {
 
 listaSidebar.addEventListener("click", function (evento) {
     let idClickeado = evento.target.dataset.id
+
+    if(evento.target.classList.contains("btn-borrar")){
+        /*Si el boton clickeado es la X entonces sera ignorado */
+        tareas = tareas.filter(function(tarea){
+            /*tarea ahora tendra todo menos el boton eliminado*/
+            return tarea.id != idClickeado
+        })
+        pintarLista()
+        return
+    }
 
     let tareaSeleccionada = tareas.find(function(tarea){
         return tarea.id == idClickeado

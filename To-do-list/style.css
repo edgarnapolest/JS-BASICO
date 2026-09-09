@@ -79,11 +79,18 @@ ul li{
 
 li{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     border: 1px solid var(--color-bordes);
     border-radius: 10px;
     height: 30px;
-    align-items: start;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
     margin: 10px 0;
+}
+
+.sidebar__li{
+    cursor: pointer;
+}
+.sidebar__li:hover{
+    filter: brightness(1.5);
 }
