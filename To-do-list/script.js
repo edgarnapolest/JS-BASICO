@@ -7,6 +7,7 @@ let botonAgregarNuevaTarea = document.querySelector('[data-valor="agregar"]')
 let botonBorrarTarea = document.querySelector('[data-valor = "borrar"]')
 let listaSidebar = document.querySelector(".sidebar__list-items")
 
+
 //clases
 class Tareas{
     constructor(id,titulo,descripcion,completada){
@@ -66,10 +67,3 @@ listaSidebar.addEventListener("click", function (evento) {
     }
 
 })
-
-
-// botonBorrarTarea.addEventListener("click",function(){
-//     evento.preventDefault()
-//     let borradoDeTarea = {
-//     }
-// })

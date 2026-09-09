@@ -6,6 +6,8 @@
     --background-color: #20232a;
     --background-color-sidebar: #2a2d3a;
     --color-bordes: #fff2;
+    --color-bordes-hover: #fff7;
+    --background-color-hover: #20232a00;
 }
 
 body,div,ul,form,h1,p{
@@ -28,10 +30,12 @@ body,div,ul,form,h1,p{
 
 .main__list-title{
     padding: 1rem;
+    margin-left: 10px;
 }
 
 .main__list-description{
     font-size: 1.2rem;
+    margin-left: 10px;
 }
 
 input,textarea{
@@ -57,6 +61,8 @@ textarea{
     height: clamp(300px,50%,800px);
     width: 90%;
     font-size: inherit;
+    outline: none;
+    height: 90%;
 }
 
 /*Sidebar Section*/
@@ -65,11 +71,14 @@ textarea{
     display: flex;
     flex-direction: column;
     padding: 1rem;
+    border-right: 1px solid var(--color-bordes);
+    border-radius: 20px;
 }
 
 .sidebar__list-input{
     width: 100%;
     font-size: 1.2rem;
+    outline: none;
 }
 
 ul li{
@@ -77,7 +86,8 @@ ul li{
     padding: 1rem;
 }
 
-li{
+.sidebar__li{
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     border: 1px solid var(--color-bordes);
@@ -88,9 +98,6 @@ li{
     margin: 10px 0;
 }
 
-.sidebar__li{
-    cursor: pointer;
-}
 .sidebar__li:hover{
-    filter: brightness(1.5);
+    border: 1px solid var(--color-bordes-hover);
 }
