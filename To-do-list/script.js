@@ -63,7 +63,13 @@ listaSidebar.addEventListener("click", function (evento) {
         tareas = tareas.filter(function(tarea){
             return tarea.id != idClickeado
         })
+        
         pintarLista()
+        if(tareaEnEdicion == idClickeado){
+            inputNuevaTareaDescripcion.value = ""
+            inputNuevaTareaTitulo.value = ""
+            tareaEnEdicion = null
+        }
         return
     }
     
