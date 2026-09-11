@@ -6,7 +6,7 @@ let inputNuevaTareaDescripcion = document.querySelector(".main__list-description
 let botonAgregarNuevaTarea = document.querySelector('[data-valor="agregar"]')
 let botonBorrarTarea = document.querySelector('[data-valor = "borrar"]')
 let listaSidebar = document.querySelector(".sidebar__list-items")
-
+let tareaEnEdicion = null
 
 //clases
 class Tareas{
@@ -24,6 +24,7 @@ function pintarLista() {
     listaSidebar.innerHTML = ""
     for (let i = 0; i < tareas.length; i++) {
         let tarea = tareas[i]
+
         listaSidebar.innerHTML += `
             <li class = "sidebar__li" data-id="${tarea.id}">
                 <span class="tarea-titulo">${tarea.titulo}</span>
@@ -31,32 +32,41 @@ function pintarLista() {
             </li>
         `
     }
+    
 }
 
 botonAgregarNuevaTarea.addEventListener("click", function (evento) {
     evento.preventDefault()
     
-    let tareaNueva = new Tareas(Date.now(),inputNuevaTareaTitulo.value,inputNuevaTareaDescripcion.value,false) 
-    tareas.push(tareaNueva)
+    if (tareaEnEdicion != null) {
+        let tareaParaEditar = tareas.find(function(tarea){
+        return tarea.id == tareaEnEdicion})
+        if(tareaParaEditar){
+            tareaParaEditar.titulo = inputNuevaTareaTitulo.value
+            tareaParaEditar.descripcion = inputNuevaTareaDescripcion.value
+        }
+    } else {
+        let tareaNueva = new Tareas(Date.now(), inputNuevaTareaTitulo.value, inputNuevaTareaDescripcion.value, false)
+        tareas.push(tareaNueva)
+    }
+    
     pintarLista()
-    inputNuevaTarea.value = ""   
-    inputNuevaTareaDescripcion.value = ""   
-    inputNuevaTareaTitulo.value = ""   
+    inputNuevaTareaTitulo.value = ""
+    inputNuevaTareaDescripcion.value = ""
+    tareaEnEdicion = null   // se resetea después de guardar, para el próximo clic en "+"
 })
 
 listaSidebar.addEventListener("click", function (evento) {
     let idClickeado = evento.target.dataset.id
 
     if(evento.target.classList.contains("btn-borrar")){
-        /*Si el boton clickeado es la X entonces sera ignorado */
         tareas = tareas.filter(function(tarea){
-            /*tarea ahora tendra todo menos el boton eliminado*/
             return tarea.id != idClickeado
         })
         pintarLista()
         return
     }
-
+    
     let tareaSeleccionada = tareas.find(function(tarea){
         return tarea.id == idClickeado
     })
@@ -64,6 +74,6 @@ listaSidebar.addEventListener("click", function (evento) {
     if (tareaSeleccionada) {
         inputNuevaTareaTitulo.value = tareaSeleccionada.titulo
         inputNuevaTareaDescripcion.value = tareaSeleccionada.descripcion
+        tareaEnEdicion = tareaSeleccionada.id   // ← nueva línea: "recordá" cuál estás editando
     }
-
 })
