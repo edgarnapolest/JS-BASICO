@@ -1,12 +1,13 @@
 let tareas = []
 
-let inputNuevaTarea = document.querySelector(".sidebar__list-input")
+let inputBusquedaDeTarea = document.querySelector(".sidebar__list-input")
 let inputNuevaTareaTitulo = document.querySelector(".main__list-title-input")
 let inputNuevaTareaDescripcion = document.querySelector(".main__list-description-textarea")
 let botonAgregarNuevaTarea = document.querySelector('[data-valor="agregar"]')
 let botonBorrarTarea = document.querySelector('[data-valor = "borrar"]')
 let listaSidebar = document.querySelector(".sidebar__list-items")
 let tareaEnEdicion = null
+let tareaEnBusqueda = null
 
 //clases
 class Tareas{
@@ -19,11 +20,11 @@ class Tareas{
 }
 
 //funciones de la sidebar
-function pintarLista() {
+function pintarLista(listaAMostrar) {
     let listaSidebar = document.querySelector(".sidebar__list-items")
     listaSidebar.innerHTML = ""
-    for (let i = 0; i < tareas.length; i++) {
-        let tarea = tareas[i]
+    for (let i = 0; i < listaAMostrar.length; i++) {
+        let tarea = listaAMostrar[i]
 
         listaSidebar.innerHTML += `
             <li class = "sidebar__li" data-id="${tarea.id}">
@@ -32,8 +33,18 @@ function pintarLista() {
             </li>
         `
     }
-    
 }
+
+function buscarTarea(){
+    tareaEnBusqueda = inputBusquedaDeTarea.value.toLowerCase()
+    tareaEnEdicion = null
+    let tareasBuscadas = tareas.filter(function(tarea){
+        return tarea.titulo.toLowerCase().includes(tareaEnBusqueda)
+    })
+    pintarLista(tareasBuscadas)
+}
+
+//Botones
 
 botonAgregarNuevaTarea.addEventListener("click", function (evento) {
     evento.preventDefault()
@@ -50,7 +61,7 @@ botonAgregarNuevaTarea.addEventListener("click", function (evento) {
         tareas.push(tareaNueva)
     }
     
-    pintarLista()
+    pintarLista(tareas)
     inputNuevaTareaTitulo.value = ""
     inputNuevaTareaDescripcion.value = ""
     tareaEnEdicion = null   // se resetea después de guardar, para el próximo clic en "+"
@@ -64,7 +75,7 @@ listaSidebar.addEventListener("click", function (evento) {
             return tarea.id != idClickeado
         })
         
-        pintarLista()
+        pintarLista(tareas)
         if(tareaEnEdicion == idClickeado){
             inputNuevaTareaDescripcion.value = ""
             inputNuevaTareaTitulo.value = ""
@@ -80,6 +91,10 @@ listaSidebar.addEventListener("click", function (evento) {
     if (tareaSeleccionada) {
         inputNuevaTareaTitulo.value = tareaSeleccionada.titulo
         inputNuevaTareaDescripcion.value = tareaSeleccionada.descripcion
-        tareaEnEdicion = tareaSeleccionada.id   // ← nueva línea: "recordá" cuál estás editando
+        tareaEnEdicion = tareaSeleccionada.id
     }
+})
+
+inputBusquedaDeTarea.addEventListener("input", function(evento){
+    buscarTarea()
 })
