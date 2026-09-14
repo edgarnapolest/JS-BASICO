@@ -98,3 +98,10 @@ listaSidebar.addEventListener("click", function (evento) {
 inputBusquedaDeTarea.addEventListener("input", function(evento){
     buscarTarea()
 })
+
+inputNuevaTareaTitulo.addEventListener("keydown", function(evento){
+    if(evento.key === "Enter"){
+        evento.preventDefault()
+        botonAgregarNuevaTarea.click()
+    }
+})
