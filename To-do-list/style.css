@@ -101,3 +101,8 @@ ul li{
 .sidebar__li:hover{
     border: 1px solid var(--color-bordes-hover);
 }
+
+.titulo-completado{
+    text-decoration: line-through;
+    opacity: 0.6;
+}

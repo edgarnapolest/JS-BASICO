@@ -28,7 +28,9 @@ function pintarLista(listaAMostrar) {
 
         listaSidebar.innerHTML += `
             <li class = "sidebar__li" data-id="${tarea.id}">
-                <span class="tarea-titulo">${tarea.titulo}</span>
+                <span class="tarea-titulo ${tarea.completada ? "titulo-completado" : ""}"><input type="checkbox" class="check-completada" data-id="${tarea.id}" ${tarea.completada ? "checked" : ""}>
+                ${tarea.titulo}
+                </span>
                 <span class="btn-borrar" data-id="${tarea.id}">✕</span>
             </li>
         `
@@ -84,6 +86,18 @@ listaSidebar.addEventListener("click", function (evento) {
         return
     }
     
+    if(evento.target.classList.contains("check-completada")){
+        let tareaParaCompletar = tareas.find(function(tarea){
+            return tarea.id == idClickeado
+        })
+        if(tareaParaCompletar){
+            tareaParaCompletar.completada = !tareaParaCompletar.completada
+            pintarLista(tareas)
+        }
+        return
+    }
+
+
     let tareaSeleccionada = tareas.find(function(tarea){
         return tarea.id == idClickeado
     })
