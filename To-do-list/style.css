@@ -25,7 +25,7 @@ body,div,ul,form,h1,p{
 
 .main__list-showed{
     display: grid;
-    grid-template-rows: 3fr 7fr; 
+    grid-template-rows: 1fr 4fr 1fr; 
 }
 
 .main__list-title{
@@ -36,6 +36,9 @@ body,div,ul,form,h1,p{
 .main__list-description{
     font-size: 1.2rem;
     margin-left: 10px;
+    
+    display: flex;
+    flex-direction: column;
 }
 
 input,textarea{
@@ -56,13 +59,49 @@ input,textarea{
     outline: none;
 }
 
+.mensaje-error {
+    visibility: hidden;
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.description__bottom{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
+
 textarea{
     resize: none;
-    height: clamp(300px,50%,800px);
     width: 90%;
+    height: 85%;
     font-size: inherit;
     outline: none;
-    height: 90%;
+}
+.sidebar__list-sumitButton {
+    margin-top: 5px;
+    margin-right: 10px;
+    padding: 10px 16px;
+    cursor: pointer;
+    border: 1px solid var(--color-bordes);
+    border-radius: 6px;
+    background-color: var(--background-color);
+    color: var(--color-de-letras);
+}
+.sidebar__list-sumitButton:hover {
+    border-color: var(--color-bordes-hover);
+}
+
+.main__label-description{
+    color: var(--color-de-letras);
+
+}
+
+.main__label-titulo{
+    color: var(--color-de-letras);
+
 }
 
 /*Sidebar Section*/

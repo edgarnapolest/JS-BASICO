@@ -19,14 +19,27 @@
         </div>
         <div class="main__list-showed">
             <div class="main__list-title">
-                <input type="text" class="main__list-title-input" placeholder="Ingrese el Titulo de la tarea...">
-                    <button type="submit" class="sidebar__list-sumitButton" data-valor="agregar">+</button>
+                <label for="tituloTarea" class="main__label-titulo">Título</label>
+                <input type="text" class="main__list-title-input" placeholder="Ingrese el Titulo de la tarea...">  
+                
             </div>
             <div class="main__list-description">
+                <label for="descripcionTarea" class="main__label-description">Descripción</label>
                 <textarea class="main__list-description-textarea" placeholder="Escribe la descripcion de la tarea..."></textarea>
             </div>
+
+            <div class="description__bottom">
+                <p class="mensaje-error"></p>
+
+                <button type="submit" class="sidebar__list-sumitButton" data-valor="agregar">
+                    Guardar tarea
+                </button>
+            </div>
+            
         </div>
+        
     </div>
+    
     <script src="script.js" defer></script>
 </body>
 </html>

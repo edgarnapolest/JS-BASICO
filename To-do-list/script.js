@@ -1,5 +1,4 @@
 let tareas = []
-
 let inputBusquedaDeTarea = document.querySelector(".sidebar__list-input")
 let inputNuevaTareaTitulo = document.querySelector(".main__list-title-input")
 let inputNuevaTareaDescripcion = document.querySelector(".main__list-description-textarea")
@@ -8,6 +7,9 @@ let botonBorrarTarea = document.querySelector('[data-valor = "borrar"]')
 let listaSidebar = document.querySelector(".sidebar__list-items")
 let tareaEnEdicion = null
 let tareaEnBusqueda = null
+let mensajeError = document.querySelector(".mensaje-error")
+cargarDeStorage()
+pintarLista(tareas)
 
 //clases
 class Tareas{
@@ -23,17 +25,27 @@ class Tareas{
 function pintarLista(listaAMostrar) {
     let listaSidebar = document.querySelector(".sidebar__list-items")
     listaSidebar.innerHTML = ""
-    for (let i = 0; i < listaAMostrar.length; i++) {
-        let tarea = listaAMostrar[i]
 
-        listaSidebar.innerHTML += `
-            <li class = "sidebar__li" data-id="${tarea.id}">
-                <span class="tarea-titulo ${tarea.completada ? "titulo-completado" : ""}"><input type="checkbox" class="check-completada" data-id="${tarea.id}" ${tarea.completada ? "checked" : ""}>
-                ${tarea.titulo}
-                </span>
-                <span class="btn-borrar" data-id="${tarea.id}">✕</span>
+    if (listaAMostrar.length === 0) {
+        listaSidebar.innerHTML = `
+            <li class="sidebar__empty">
+                ${tareaEnBusqueda ? "No se encontraron tareas" : "No hay tareas todavía"}
             </li>
         `
+        return
+    }
+
+    for (let i = 0; i < listaAMostrar.length; i++) {
+        let tarea = listaAMostrar[i]
+        listaSidebar.innerHTML += `
+        <li class = "sidebar__li" data-id="${tarea.id}">
+            <span class="tarea-titulo ${tarea.completada ? "titulo-completado" : ""}"><input type="checkbox" class="check-completada" data-id="${tarea.id}" ${tarea.completada ? "checked" : ""}>
+            ${tarea.titulo}
+            </span>
+            <span class="btn-borrar" data-id="${tarea.id}">✕</span>
+        </li>
+        `
+        
     }
 }
 
@@ -46,23 +58,45 @@ function buscarTarea(){
     pintarLista(tareasBuscadas)
 }
 
+function guardarEnStorage() {
+    localStorage.setItem("tareas", JSON.stringify(tareas))
+}
+
+function cargarDeStorage() {
+    let datosGuardados = localStorage.getItem("tareas")
+    if (datosGuardados) {
+        tareas = JSON.parse(datosGuardados)
+    }
+}
 //Botones
 
 botonAgregarNuevaTarea.addEventListener("click", function (evento) {
     evento.preventDefault()
     
+    if(inputNuevaTareaTitulo.value.trim() === ""){
+        mensajeError.textContent = "No se puede agregar una tarea vacía"
+        mensajeError.style.visibility = "visible"
+
+        setTimeout(function () {
+            mensajeError.style.visibility = "hidden"
+        }, 2000)
+
+        return
+    }
+
     if (tareaEnEdicion != null) {
         let tareaParaEditar = tareas.find(function(tarea){
         return tarea.id == tareaEnEdicion})
         if(tareaParaEditar){
             tareaParaEditar.titulo = inputNuevaTareaTitulo.value
             tareaParaEditar.descripcion = inputNuevaTareaDescripcion.value
+            guardarEnStorage()
         }
-    } else {
+        } else {
         let tareaNueva = new Tareas(Date.now(), inputNuevaTareaTitulo.value, inputNuevaTareaDescripcion.value, false)
         tareas.push(tareaNueva)
+        guardarEnStorage()
     }
-    
     pintarLista(tareas)
     inputNuevaTareaTitulo.value = ""
     inputNuevaTareaDescripcion.value = ""
@@ -83,7 +117,9 @@ listaSidebar.addEventListener("click", function (evento) {
             inputNuevaTareaTitulo.value = ""
             tareaEnEdicion = null
         }
+        guardarEnStorage()
         return
+
     }
     
     if(evento.target.classList.contains("check-completada")){
@@ -93,6 +129,7 @@ listaSidebar.addEventListener("click", function (evento) {
         if(tareaParaCompletar){
             tareaParaCompletar.completada = !tareaParaCompletar.completada
             pintarLista(tareas)
+            guardarEnStorage()
         }
         return
     }
