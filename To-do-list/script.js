@@ -38,13 +38,12 @@ function pintarLista(listaAMostrar) {
     for (let i = 0; i < listaAMostrar.length; i++) {
         let tarea = listaAMostrar[i]
         listaSidebar.innerHTML += `
-        <li class = "sidebar__li" data-id="${tarea.id}">
-            <span class="tarea-titulo ${tarea.completada ? "titulo-completado" : ""}"><input type="checkbox" class="check-completada" data-id="${tarea.id}" ${tarea.completada ? "checked" : ""}>
-            ${tarea.titulo}
-            </span>
-            <span class="btn-borrar" data-id="${tarea.id}">✕</span>
-        </li>
-        `
+    <li class="sidebar__li" data-id="${tarea.id}">
+        <input type="checkbox" class="check-completada" data-id="${tarea.id}" ${tarea.completada ? "checked" : ""}>
+        <span data-id="${tarea.id}" class="tarea-titulo ${tarea.completada ? "titulo-completado" : ""}">${tarea.titulo}</span>
+        <span class="btn-borrar" data-id="${tarea.id}">✕</span>
+    </li>
+    `
         
     }
 }
@@ -100,10 +99,13 @@ botonAgregarNuevaTarea.addEventListener("click", function (evento) {
     pintarLista(tareas)
     inputNuevaTareaTitulo.value = ""
     inputNuevaTareaDescripcion.value = ""
-    tareaEnEdicion = null   // se resetea después de guardar, para el próximo clic en "+"
+    tareaEnEdicion = null 
 })
 
 listaSidebar.addEventListener("click", function (evento) {
+    let li = evento.target.closest(".sidebar__li")
+    if (!li) return
+
     let idClickeado = evento.target.dataset.id
 
     if(evento.target.classList.contains("btn-borrar")){
