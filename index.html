@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Proyectos de JavaScript básico realizados durante mi aprendizaje.">
+  <title>JavaScript Básico | Proyectos</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin:0; min-height:100vh; font-family:Arial,sans-serif; background:#f4f4f5; color:#18181b; display:flex; align-items:center; justify-content:center; padding:32px 16px; }
+    main { width:min(900px,100%); }
+    header { text-align:center; margin-bottom:32px; }
+    h1 { margin-bottom:10px; font-size:clamp(2rem,5vw,3.2rem); }
+    header p { margin:0 auto; max-width:650px; line-height:1.6; color:#52525b; }
+    .projects { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+    article { background:white; border:1px solid #e4e4e7; border-radius:16px; padding:24px; box-shadow:0 8px 24px rgba(0,0,0,.06); }
+    h2 { margin-top:0; }
+    article p { line-height:1.6; color:#52525b; }
+    .tags { display:flex; flex-wrap:wrap; gap:8px; margin:18px 0; }
+    .tag { padding:6px 10px; border-radius:999px; background:#f4f4f5; font-size:.85rem; }
+    a { display:inline-block; text-decoration:none; font-weight:700; color:#18181b; border:1px solid #d4d4d8; border-radius:10px; padding:10px 14px; }
+    a:hover { background:#18181b; color:white; }
+    footer { text-align:center; margin-top:28px; color:#71717a; font-size:.9rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>JavaScript Básico</h1>
+      <p>Proyectos realizados durante mi aprendizaje de JavaScript, utilizando HTML, CSS y JavaScript puro.</p>
+    </header>
+    <section class="projects" aria-label="Proyectos">
+      <article>
+        <h2>🧮 Calculadora</h2>
+        <p>Calculadora funcional con entrada mediante botones y teclado físico, validaciones y manejo de errores.</p>
+        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">DOM</span></div>
+        <a href="./Calculadora/">Ver proyecto →</a>
+      </article>
+      <article>
+        <h2>✅ To-Do List</h2>
+        <p>Aplicación para crear, editar, buscar, completar y eliminar tareas, con persistencia mediante localStorage.</p>
+        <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">localStorage</span></div>
+        <a href="./To-do-list/">Ver proyecto →</a>
+      </article>
+    </section>
+    <footer>Proyecto de aprendizaje personal · JavaScript Vanilla</footer>
+  </main>
+</body>
+</html>
