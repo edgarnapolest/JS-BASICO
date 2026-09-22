@@ -14,11 +14,12 @@ pintarLista(tareas)
 
 //clases
 class Tareas{
-    constructor(id,titulo,descripcion,completada){
+    constructor(id,titulo,descripcion,completada,fecha){
         this.id = id
         this.titulo = titulo
         this.descripcion = descripcion
         this.completada =  completada
+        this.fecha = fecha
     }
 }
 
@@ -26,6 +27,10 @@ class Tareas{
 function pintarLista(listaAMostrar) {
     let listaSidebar = document.querySelector(".sidebar__list-items")
     listaSidebar.innerHTML = ""
+
+    listaAMostrar = [...listaAMostrar].sort(function(a, b) {
+        return b.fecha - a.fecha
+    })
 
     if (listaAMostrar.length === 0) {
         listaSidebar.innerHTML = `
@@ -93,7 +98,7 @@ botonAgregarNuevaTarea.addEventListener("click", function (evento) {
             guardarEnStorage()
         }
         } else {
-        let tareaNueva = new Tareas(Date.now(), inputNuevaTareaTitulo.value, inputNuevaTareaDescripcion.value, false)
+        let tareaNueva = new Tareas(crypto.randomUUID(), inputNuevaTareaTitulo.value, inputNuevaTareaDescripcion.value, false,Date.now())
         tareas.push(tareaNueva)
         guardarEnStorage()
     }
