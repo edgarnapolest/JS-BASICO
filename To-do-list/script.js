@@ -5,6 +5,7 @@ let inputNuevaTareaDescripcion = document.querySelector(".main__list-description
 let botonAgregarNuevaTarea = document.querySelector('[data-valor="agregar"]')
 let botonBorrarTarea = document.querySelector('[data-valor = "borrar"]')
 let listaSidebar = document.querySelector(".sidebar__list-items")
+let botonNuevaTarea = document.querySelector('[data-valor="nuevaTarea"]')
 let tareaEnEdicion = null
 let tareaEnBusqueda = null
 let mensajeError = document.querySelector(".mensaje-error")
@@ -157,4 +158,14 @@ inputNuevaTareaTitulo.addEventListener("keydown", function(evento){
         evento.preventDefault()
         botonAgregarNuevaTarea.click()
     }
+})
+
+botonNuevaTarea.addEventListener("click", function(evento){
+    inputNuevaTareaTitulo.value = ""
+    inputNuevaTareaDescripcion.value = ""
+    tareaEnEdicion = null 
+    inputNuevaTareaTitulo.focus()
+    inputBusquedaDeTarea.value = ""
+    tareaEnBusqueda = null
+    pintarLista(tareas)
 })

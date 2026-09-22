@@ -89,13 +89,9 @@ textarea{
     margin-right: 10px;
     padding: 10px 16px;
     cursor: pointer;
-    border: 1px solid var(--color-bordes);
     border-radius: 6px;
     background-color: var(--background-color);
     color: var(--color-de-letras);
-}
-.sidebar__list-sumitButton:hover {
-    border-color: var(--color-bordes-hover);
 }
 
 .main__label-description,
@@ -113,6 +109,8 @@ textarea{
     padding: 1rem;
     border-right: 1px solid var(--color-bordes);
     border-radius: 20px;
+    height: 100%;
+    overflow: hidden;
 }
 
 .sidebar__list-input{
@@ -135,6 +133,7 @@ ul li{
     transition: background 0.15s;
     overflow: hidden;
 }
+
 .tarea-titulo{
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -147,6 +146,7 @@ ul li{
     overflow-wrap: anywhere;
     word-break: break-word
 }
+
 .sidebar__li:hover{
     border: 1px solid var(--color-bordes-hover);
 }
@@ -169,4 +169,28 @@ ul li{
 }
 ul{
     margin-top: 5px;
+}
+
+.sidebar__add-new-task-botton{
+    margin-top: auto;
+    cursor: pointer;
+    padding: 10px 16px;
+    color: var(--color-de-letras);
+    background:  var(--background-color);
+    border-radius: 10px;
+    margin-left: auto;
+}
+
+.sidebar__list-newList{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.sidebar__list-items{
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
 }

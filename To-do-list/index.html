@@ -16,7 +16,9 @@
                 <ul class="sidebar__list-items">
                 </ul>
             </div>
+            <button type="button" class="sidebar__add-new-task-botton" data-valor="nuevaTarea">+ Nueva tarea</button>
         </div>
+        
         <div class="main__list-showed">
             <div class="main__list-title">
                 <label for="tituloTarea" class="main__label-titulo">Título</label>
@@ -27,19 +29,14 @@
                 <label for="descripcionTarea" class="main__label-description">Descripción</label>
                 <textarea class="main__list-description-textarea" placeholder="Escribe la descripcion de la tarea..." id="descripcionTarea"></textarea>
             </div>
-
             <div class="description__bottom">
                 <p class="mensaje-error"></p>
-
                 <button type="submit" class="sidebar__list-sumitButton" data-valor="agregar">
                     Guardar tarea
                 </button>
             </div>
-            
         </div>
-        
     </div>
-    
     <script src="script.js" defer></script>
 </body>
 </html>
