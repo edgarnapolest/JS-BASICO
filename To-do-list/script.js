@@ -3,7 +3,6 @@ let inputBusquedaDeTarea = document.querySelector(".sidebar__list-input")
 let inputNuevaTareaTitulo = document.querySelector(".main__list-title-input")
 let inputNuevaTareaDescripcion = document.querySelector(".main__list-description-textarea")
 let botonAgregarNuevaTarea = document.querySelector('[data-valor="agregar"]')
-let botonBorrarTarea = document.querySelector('[data-valor = "borrar"]')
 let listaSidebar = document.querySelector(".sidebar__list-items")
 let botonNuevaTarea = document.querySelector('[data-valor="nuevaTarea"]')
 let tareaEnEdicion = null

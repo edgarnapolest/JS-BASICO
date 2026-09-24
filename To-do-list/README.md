@@ -1,14 +1,14 @@
-# ✅ To-Do List
+#  To-Do List
 
 Aplicación de gestión de tareas desarrollada con **HTML, CSS y JavaScript puro**, sin frameworks ni librerías externas.
 
 El proyecto permite crear y gestionar tareas y utiliza `localStorage` para conservar la información después de cerrar o recargar la página.
 
-## 🌐 Demo
+##  Demo
 
 **[Abrir To-Do List](https://edgarnapolest.github.io/JS-BASICO/To-do-list/)**
 
-## ✨ Funcionalidades
+##  Funcionalidades
 
 - Crear tareas con título y descripción.
 - Editar tareas existentes.
@@ -21,14 +21,14 @@ El proyecto permite crear y gestionar tareas y utiliza `localStorage` para conse
 - Validación de campos antes de guardar.
 - Actualización dinámica de la interfaz.
 
-## 🛠️ Tecnologías
+##  Tecnologías
 
 - HTML5
 - CSS3
 - CSS Grid
 - JavaScript ES6+
 
-## 📚 Qué practiqué
+##  Qué practiqué
 
 - Manipulación dinámica del DOM.
 - Eventos y delegación de eventos.
@@ -42,7 +42,7 @@ El proyecto permite crear y gestionar tareas y utiliza `localStorage` para conse
 
 Una de las ideas principales del proyecto es utilizar el array de tareas como fuente de verdad y regenerar la interfaz a partir de ese estado cuando se producen cambios.
 
-## 🚀 Ejecución local
+##  Ejecución local
 
 No requiere instalación de dependencias.
 
@@ -50,7 +50,7 @@ No requiere instalación de dependencias.
 2. Entra en la carpeta `To-do-list`.
 3. Abre `index.html` en el navegador.
 
-## 🔮 Posibles mejoras
+##  Posibles mejoras
 
 - Categorías o etiquetas.
 - Fechas límite.
